@@ -59,11 +59,11 @@ maps.com 0.30
 ufl.edu 0.20
 )";
 
-	AdjacencyList g;
-	string actualOutput = "";
+	string actualOutput;
 
 	//somehow pass your input into your AdjacencyList and parse it to call the
 	//correct functions, for example:
+    // AdjacencyList g;
 	// g.parseInput(input)
 	// actualOutput = g.getStringRepresentation()
 
