@@ -268,7 +268,7 @@ You may want to test helper methods in your AVL class that are declared as priva
 #include "AVL.h"
 ```
 
-This *preprocessor directive* will replace every instance of the word "private" with "public" in the included files that follow the declaration. This has the effect of turning all of your private methods into public ones that Catch2 can see, but only in your test.cpp. There are a couple things keep in mind if you choose to do this, however:
+This *preprocessor directive* will replace every instance of the word "private" with "public" in the included files that follow the declaration. **Make sure that it goes *after* your standard library includes and before you include your own headers.** This has the effect of turning all of your private methods into public ones that Catch2 can see, but only in your test.cpp. There are a couple things keep in mind if you choose to do this, however:
 
 1. This directive will only replace "private" with "public" if the word is actually present, so if you make use of the fact that a class's properties and function definitions are private by default without having to write `private:`, you'll need to go back into your header and explicitly write the access modifier for this to work.
 2. Depending on what standard library headers you use, this change could break their functionality. To get around this, you can either:
