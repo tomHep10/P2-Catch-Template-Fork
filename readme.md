@@ -234,6 +234,17 @@ However, if you just started using this template to run your catch tests, you ma
 
 However, if you still have errors, you should fix them and leave the `-Werror` flag as it is. This is because Gradescope uses `-Werror` when compiling your project, so if you don't address them now, the autograder will likely fail to successfully build and test your project.
 
+## "Tests not found" error in CodeSpaces or VSCode
+This is a tricky error to debug as it could be due to multiple causes affecting your tests, but one easy thing to check is the bottom of your CMakeLists.txt. Make sure the lines:
+```cmake
+include(CTest)
+include(Catch)
+catch_discover_tests(Tests) # must be named the same as your test executable
+```
+are *not* commented out, as these are what allows the Catch2 tests to hook into the VSCode testing GUI. If these are uncommented and your tests are still not being found, take a look at some of the other common issues to see if those could be causing problems with how your tests build.
+
+CLion does not need these lines to interface with Catch2, and will actually add many extra run configurations to your project if they are present when it first loads your CMake configuration. It works either way, but I recommend commenting these out if you do use CLion.
+
 ## My tests fail to run in CLion with an error that looks like the text of my test cases!
 
 This template uses the latest version of Catch2 (3.5.2 as of the writing of this readme). Older versions of CLion can have trouble with later versions of Catch2 v3. These errors can usually be fixed by just updating your CLion. 
