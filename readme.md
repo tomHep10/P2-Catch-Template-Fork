@@ -241,7 +241,9 @@ include(CTest)
 include(Catch)
 catch_discover_tests(Tests) # must be named the same as your test executable
 ```
-are *not* commented out, as these are what allows the Catch2 tests to hook into the VSCode testing GUI. If these are uncommented and your tests are still not being found, take a look at some of the other common issues to see if those could be causing problems with how your tests build.
+are *not* commented out, as these are what allows the Catch2 tests to hook into the VSCode testing GUI. If you do end up changing this, you may need to "manually" run the tests once through the CMake menu following similar instructions to the [VSCode/Codespace](#vscodecodespace) section but instead select Tests as your launch target. After this the testing GUI should start working again.
+
+If these are uncommented and you've manually run the tests once and your tests are still not being found, take a look at some of the other common issues to see if those could be causing problems with how your tests build.
 
 CLion does not need these lines to interface with Catch2, and will actually add many extra run configurations to your project if they are present when it first loads your CMake configuration. It works either way, but I recommend commenting these out if you do use CLion.
 
