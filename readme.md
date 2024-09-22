@@ -2,6 +2,7 @@
 <!-- Setting up embed: -->
 <!-- https://ardalis.com/how-to-embed-youtube-video-in-github-readme-markdown/ -->
 [![Thumbnail for tutorial video](https://img.youtube.com/vi/R8-glh-Twh4/maxresdefault.jpg)](https://www.youtube.com/watch?v=R8-glh-Twh4)
+**See [the bottom of this document](#common-issues) for common issues and their solutions before asking for help in the Discord!**
 
 # When should I start testing?
 **From the very start of your project!** By following principles of *Test Driven Development* (TDD) from the very start of your project, you create a tangible roadmap of features to implement, and you can be confident in knowing that your simpler features work when implementing more advanced ones. If you don't develop with testing in mind, you may end up having to refactor your code so you can test the output of functions (or use a workaround to capture COUT). 
@@ -18,7 +19,9 @@ By using this template *right when you start work on your project*, you can writ
 
 # Which method should I choose?
 
-Method 1: Cloud Development will have you set up with a working programming environment the quickest, and requires no set up on your computer by using cloud containers. You are limited to using VSCode, however, and there is a limit to the amount of time you can spend programming with it, although you are unlikely to run into it. Still, it enables you to work on your project anywhere and on any device, so long as you have a web browser.
+**Method 2:Local Development is recommended.**
+
+Method 1:Cloud Development will have you set up with a working programming environment the quickest, and requires no set up on your computer by using cloud containers. You are limited to using VSCode, however, and there is a limit to the amount of time you can spend programming with it, although you are unlikely to run into it. Still, it enables you to work on your project anywhere and on any device, so long as you have a web browser. **This is recommended if you have any issues that you cannot solve when setting the development environment up locally on your computer, but otherwise local development (Method 2) will likely provide a smoother development experience.**
 
 Method 2: Local Development can take a bit more work as you might have to install some dependencies, but it enables you to use CLion (which tends to have better C++-specific features) in addition to a local VSCode instance with your preferred settings and extensions. If you want to work on your project on multiple devices, however, you need to make sure to sync your project with Git. **This is the recommended way to work on the project if you don't have any issues with your local setup.**
 
@@ -44,6 +47,8 @@ In the case that you do run out of hours or you simply no longer wish to use Cod
 This is the "regular" way to work on programming quizzes and projects, and lets you use any IDE of your choosing, like CLion (my personal favorite). However, it depends on your local environment having all of the required packages and libraries, namely Git. Instructions are provided below, and you are welcome to ask any TA for help in setting up your computer, but if for whatever reason you are absolutely unable to get the toolchain set up, you should fall back on the Codespaces option, which is guaranteed to work.
 
 Catch2 is automatically pulled in to your project by our CMakeLists.txt configuration, and should require no extra work on your part (given that you have git installed and working).
+
+To get started, make a copy of the template repository the same way you did in Method 1 and then clone your new repository to your computer and open it in your editor of choice (or use its "Get from VCS" feature to open it directly).
 
 <!-- ### Installing Catch2 -->
 <!-- The provided CMakeLists.txt build file assumes that you are using Catch2 v3, which has much improved testing speeds over the previous versions. Instructions for installing the library system-wide are provided below, partially adapted from [Catch2's documentation](https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md). -->
@@ -100,7 +105,7 @@ include(Catch)
 catch_discover_tests(Tests) # must be named the same as your test executable
 ```
 
-In case they cause issues with CLion, simply comment them out and reload your CMake configuration. 
+These will cause many more tests to be discovered by CLion than normal, which could cause your run configuration menu to become clogged but will otherwise not affect your project. Comment these lines out before building your project for the first time if using CLion.
 
 See [here](https://github.com/COP3530/catch-with-cmake#part-3-integrating-with-clion) for more detail.
 
@@ -169,7 +174,7 @@ Depending on your editor, you may need to modify the `add_executable()` sections
 
 Choosing the executable differs depending on the editor that you are using. In Clion (and potentially Visual Studio), you should be able to click the dropdown next to the Run button and choose Main or Tests. In VSCode, you should click on the CMake tab in the sidebar, and under Launch, click the edit button to select Main to run your AVL tree.
 
-Please reach out on Slack if you have any questions, and the guide will be updated accordingly.
+Please reach out on Discord if you have any questions, and the guide will be updated accordingly.
 
 ## Project 2 Template Features
 The template includes the suggested code structure from the "Simplified Page Rank" document. Feel free to change it to suit your needs, but be sure that any code you want to test is not written in main.cpp!
@@ -195,6 +200,11 @@ To debug your either your main or tests, you can place breakpoints as normal. Th
 Make sure to comment out the lines at the bottom of `CMakeLists.txt` or you will have *a lot* of possible targets. To select whether to run your main or tests, click the dropdown at the top of the window  and select your desired executable:
 
 ![clion select target](.github-images/CLion/run_clion.png)
+
+From here, if you run the Tests target, you should see your test results appear in a testing window at the bottom of your screen. 
+
+![clion test results](.github-images/CLion/test_results.png)
+By default, CLion will only show failing tests. Click on the checkmark button in the top of the panel to show passing tests as well.
 
 #### Debugging
 Debugging should work as expected. You can also put breakpoints in your catch tests if you desire.
