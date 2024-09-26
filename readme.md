@@ -1,7 +1,13 @@
 # Video Tutorial
 <!-- Setting up embed: -->
 <!-- https://ardalis.com/how-to-embed-youtube-video-in-github-readme-markdown/ -->
+
+### Codespaces/VSCode Tutorial
 [![Thumbnail for tutorial video](https://img.youtube.com/vi/R8-glh-Twh4/maxresdefault.jpg)](https://www.youtube.com/watch?v=R8-glh-Twh4)
+
+### Local CLion Tutorial
+[![Thumbnail for CLion tutorial video](https://img.youtube.com/vi/T6CG9T7nFaA/maxresdefault.jpg)](https://www.youtube.com/watch?v=T6CG9T7nFaA)
+
 **See [the bottom of this document](#common-issues) for common issues and their solutions before asking for help in the Discord!**
 
 # When should I start testing?
