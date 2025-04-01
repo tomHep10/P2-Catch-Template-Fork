@@ -14,3 +14,7 @@ string AdjacencyList::PageRank(int n){
     cout << result;
     return result;
 }
+
+void AdjacencyList::addEdge(const std::string& from, const std::string& to) {}
+void AdjacencyList::addNode(const std::string& node) {}
+bool AdjacencyList::hasEdge(const std::string& from, const std::string& to) const { return false; }
