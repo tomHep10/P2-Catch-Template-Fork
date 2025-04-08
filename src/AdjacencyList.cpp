@@ -15,7 +15,7 @@ int AdjacencyList::createID(const string& page) {
         id_to_page[current_id] = page;
 
         return current_id;
-    } else { // pages already exists
+    } else { // pages exists
         return page_to_id[page];
     }
 }
@@ -87,7 +87,7 @@ void AdjacencyList::calculatePageRank(int power_iterations) {
                     ranks[j] = 0.0;
                 }
             }
-            continue; // Skip the rest of the loop
+            continue;
         }
 
         for (int j = 0; j < nodes; ++j) {
