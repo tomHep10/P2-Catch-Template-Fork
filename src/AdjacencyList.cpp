@@ -20,18 +20,6 @@ int AdjacencyList::createID(const string& page) {
     }
 }
 
-// calculates out degrees based off size of adjacency list at node_id
-map<int,double> AdjacencyList::calculateOutDegrees() const {
-    map<int, double> out_degrees;
-
-    for (const auto& [node_id, neighbors] : adj) {
-        out_degrees[node_id] = neighbors.size();
-    }
-
-    return out_degrees;
-}
-
-
 // creating edge with createID and adding to adjacency list
 void AdjacencyList::addEdge(const string& from_page, const string& to_page) {
     int from_id = createID(from_page);
@@ -44,6 +32,17 @@ void AdjacencyList::addEdge(const string& from_page, const string& to_page) {
         int to_id = createID(to_page);
         adj[from_id].push_back(to_id);
     }
+}
+
+// calculates out degrees based off size of adjacency list at node_id
+map<int,double> AdjacencyList::calculateOutDegrees() const {
+    map<int, double> out_degrees;
+
+    for (const auto& [node_id, neighbors] : adj) {
+        out_degrees[node_id] = neighbors.size();
+    }
+
+    return out_degrees;
 }
 
 void AdjacencyList::calculatePageRank(int power_iterations) {
