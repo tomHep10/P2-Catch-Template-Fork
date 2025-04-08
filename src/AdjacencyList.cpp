@@ -37,9 +37,12 @@ void AdjacencyList::addEdge(const string& from_page, const string& to_page) {
 // calculates out degrees based off size of adjacency list at node_id
 map<int,double> AdjacencyList::calculateOutDegrees() const {
     map<int, double> out_degrees;
+    int node_id;
 
-    for (const auto& [node_id, neighbors] : adj) {
-        out_degrees[node_id] = neighbors.size();
+    for (const auto& pair : adj) {
+        node_id = pair.first;
+        const auto& neighbor = pair.second;
+        out_degrees[node_id] = neighbor.size();
     }
 
     return out_degrees;
