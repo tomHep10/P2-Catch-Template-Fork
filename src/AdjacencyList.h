@@ -12,7 +12,7 @@ private:
     map<string, int> page_to_id;
     map<int, string> id_to_page;
 
-    // adjacency list and ranks, each use id's as keys using getOrCreateID
+    // adjacency list and ranks, each use id's as keys using createID
     map<int, vector<int>> adj;
     map<int, double> ranks;
 
@@ -21,13 +21,13 @@ private:
 
     // creates id's checks for duplicates
     // returns the id of the page if it exists, if not returns a new id sequentially 0-n
-    int getOrCreateID(const string& url);
+    int createID(const string& url);
 
     // Calculates the out-degree for every page
     map<int, double> calculateOutDegrees() const;
 
 public:
-    // adds pages to adjacency list, uses getOrCreateID
+    // adds pages to adjacency list, uses createID
     void addEdge(const string& from_url, const string& to_url);
 
     // does initial ranks, and then power iterations

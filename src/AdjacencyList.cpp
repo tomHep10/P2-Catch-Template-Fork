@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int AdjacencyList::getOrCreateID(const string& page) {
+int AdjacencyList::createID(const string& page) {
     // if page doesn't exist, creates a new id
     if (page_to_id.find(page) == page_to_id.end()) {
         int current_id = id++;
@@ -20,7 +20,7 @@ int AdjacencyList::getOrCreateID(const string& page) {
     }
 }
 
-// calculates out degrees based off size of adjacency list at i
+// calculates out degrees based off size of adjacency list at node_id
 map<int,double> AdjacencyList::calculateOutDegrees() const {
     map<int, double> out_degrees;
 
@@ -32,22 +32,22 @@ map<int,double> AdjacencyList::calculateOutDegrees() const {
 }
 
 
-// creating edge with getOrCreateID and adding to adjacency list
+// creating edge with createID and adding to adjacency list
 void AdjacencyList::addEdge(const string& from_page, const string& to_page) {
-    int from_id = getOrCreateID(from_page);
+    int from_id = createID(from_page);
 
     if (to_page.empty()) {
         if (adj.find(from_id) == adj.end()) {
             adj[from_id] = {};
         }
     } else {
-        int to_id = getOrCreateID(to_page);
+        int to_id = createID(to_page);
         adj[from_id].push_back(to_id);
     }
 }
 
 void AdjacencyList::calculatePageRank(int power_iterations) {
-    int nodes = id; // Assuming 'id' holds the count of unique vertices
+    int nodes = id;
     if (nodes == 0) return;
 
     map<int, double> old_ranks;
